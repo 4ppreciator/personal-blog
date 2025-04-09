@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADP 실기 시험 대비 자료</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ADP 실기 시험 대비 자료</h1>
+            <p>데이터분석전문가(ADP) 실기 시험 대비를 위한 문제 유형 및 학습 자료</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#intro">소개</a></li>
+                <li><a href="#problem-types">문제 유형</a></li>
+                <li><a href="#machine-learning">기계학습 영역</a></li>
+                <li><a href="#statistics">통계 영역</a></li>
+                <li><a href="#examples">예제 문제</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="intro">
+            <h2>소개</h2>
+            <div class="card">
+                <p>이 웹페이지는 데이터분석전문가(ADP) 실기 시험 대비를 위한 자료를 제공합니다. ADP 실기 시험의 문제 유형을 기계학습과 통계 영역으로 분류하고, 각 유형별 개념, Python 코드 예시, 출력 결과 해석 방법을 정리했습니다.</p>
+                
+                <div class="info-box">
+                    <h3>ADP 실기 시험 개요</h3>
+                    <ul>
+                        <li>시험 시간: 4시간</li>
+                        <li>문제 구성: 2~3문제 (기계학습 및 통계 영역)</li>
+                        <li>평가 방식: 데이터 분석 능력, 코딩 능력, 결과 해석 능력 등을 종합적으로 평가</li>
+                    </ul>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="problemTypeChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem-types">
+            <h2>문제 유형</h2>
+            <div class="tabs">
+                <div class="tab-header">
+                    <div class="tab-btn active" data-tab="ml-types">기계학습 영역</div>
+                    <div class="tab-btn" data-tab="stat-types">통계 영역</div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="ml-types">
+                        <div class="card">
+                            <h3>데이터 전처리</h3>
+                            <ul>
+                                <li>결측값 처리: 데이터셋의 결측치를 적절한 방법으로 처리하는 문제</li>
+                                <li>이상값 탐지 및 수정: 데이터셋에서 이상값을 찾고 처리하는 문제</li>
+                                <li>데이터 정규화/표준화: 데이터의 스케일을 조정하는 문제</li>
+                                <li>파생 변수 생성: 기존 변수를 활용하여 새로운 변수를 생성하는 문제</li>
+                                <li>변수 선택: 다중공선성(VIF) 등을 고려한 변수 선택 문제</li>
+                                <li>데이터 분할: 훈련/테스트 데이터셋 분할 문제</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>탐색적 데이터 분석(EDA)</h3>
+                            <ul>
+                                <li>기초 통계량 분석: 데이터의 평균, 분산, 중앙값 등 기초 통계량 계산 문제</li>
+                                <li>데이터 시각화: 히스토그램, 산점도, 상자그림 등을 활용한 시각화 문제</li>
+                                <li>데이터 분포 확인: 데이터의 분포 특성을 파악하는 문제</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>기계학습 알고리즘을 활용한 모델 구축</h3>
+                            <ul>
+                                <li>회귀 분석: 선형 회귀, 로지스틱 회귀 등을 활용한 모델 구축 문제</li>
+                                <li>분류 분석: SVM, 의사결정나무, 랜덤 포레스트 등을 활용한 분류 모델 구축 문제</li>
+                                <li>군집화 분석: K-means 등을 활용한 군집화 문제</li>
+                                <li>차원 축소: PCA 등을 활용한 차원 축소 문제</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>모델 평가 및 최적 모델 선정</h3>
+                            <ul>
+                                <li>평가 지표 활용: 정확도, 정밀도, 재현율, F1-score 등을 활용한 모델 평가 문제</li>
+                                <li>교차 검증: K-fold 교차 검증 등을 활용한 모델 평가 문제</li>
+                                <li>하이퍼파라미터 튜닝: 그리드 서치, 랜덤 서치 등을 활용한 하이퍼파라미터 최적화 문제</li>
+                                <li>앙상블 기법: 배깅, 부스팅 등을 활용한 모델 성능 향상 문제</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="stat-types">
+                        <div class="card">
+                            <h3>기초 통계 분석</h3>
+                            <ul>
+                                <li>기술통계량 계산: 평균, 분산, 표준편차, 중앙값 등 계산 문제</li>
+                                <li>히스토그램 및 상자그림 시각화: 데이터 분포 시각화 문제</li>
+                                <li>확률 분포: 정규분포, 이항분포, 포아송분포 등 확률분포 관련 문제</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>통계적 추론 및 통계 모형 구축</h3>
+                            <ul>
+                                <li>가설 검정: 귀무가설과 대립가설 설정, 검정통계량 계산, 유의확률 해석 문제</li>
+                                <li>신뢰구간 계산: 모수에 대한 신뢰구간 계산 문제</li>
+                                <li>정규 모집단에서의 추론: 정규분포 가정 하에서의 통계적 추론 문제</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>상관 분석 및 회귀 분석</h3>
+                            <ul>
+                                <li>상관 분석: 변수 간 상관관계 분석 문제</li>
+                                <li>단순 회귀 분석: 한 개의 독립변수를 사용한 회귀분석 문제</li>
+                                <li>다중 회귀 분석: 여러 개의 독립변수를 사용한 회귀분석 문제</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>다변량 분석 및 시계열 분석</h3>
+                            <ul>
+                                <li>분산분석(ANOVA): 집단 간 평균 차이 검정 문제</li>
+                                <li>범주형 자료분석: 카이제곱 검정, 교차분석 등 범주형 자료 분석 문제</li>
+                                <li>시계열 분석: 시간에 따른 데이터 패턴 분석 문제</li>
+                                <li>관리도 분석: 품질관리를 위한 관리도 작성 및 해석 문제</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="machine-learning">
+            <h2>기계학습 영역</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>데이터 전처리</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>데이터 전처리는 원시 데이터를 분석에 적합한 형태로 변환하는 과정입니다. 이 과정은 데이터 분석 및 모델링의 성능에 큰 영향을 미치므로 매우 중요합니다. 주요 전처리 작업으로는 결측값 처리, 이상값 탐지 및 수정, 데이터 정규화/표준화, 파생 변수 생성, 변수 선택, 데이터 분할 등이 있습니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 데이터 로드
+df = pd.read_csv('sample_data.csv')
+
+# 결측값 확인
+print("결측값 개수:")
+print(df.isnull().sum())
+
+# 결측값 처리 방법 1: 삭제
+df_dropped = df.dropna()  # 결측값이 있는 행 삭제
+
+# 결측값 처리 방법 2: 대체
+df_filled_mean = df.fillna(df.mean())  # 평균값으로 대체
+df_filled_median = df.fillna(df.median())  # 중앙값으로 대체
+df_filled_mode = df.fillna(df.mode().iloc[0])  # 최빈값으로 대체
+
+# 결측값 처리 방법 3: 보간
+df_interpolated = df.interpolate(method='linear')  # 선형 보간</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>결측값 개수:
+feature1    10
+feature2     5
+feature3     0
+feature4    15</pre>
+                            <p>위 결과는 feature1에 10개, feature2에 5개, feature4에 15개의 결측값이 있음을 보여줍니다. feature3에는 결측값이 없습니다. 이를 통해 어떤 변수에 결측값이 많은지 파악하고, 적절한 처리 방법을 선택할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>탐색적 데이터 분석(EDA)</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>탐색적 데이터 분석(Exploratory Data Analysis, EDA)은 데이터의 주요 특성을 파악하기 위해 다양한 기법을 사용하여 데이터를 요약하고 시각화하는 과정입니다. EDA를 통해 데이터의 패턴, 이상점, 관계 등을 발견하고, 이를 바탕으로 가설을 설정하거나 적절한 분석 방법을 선택할 수 있습니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 데이터 로드
+df = pd.read_csv('sample_data.csv')
+
+# 데이터 기본 정보 확인
+print("데이터 크기:", df.shape)
+print("\n데이터 타입:")
+print(df.dtypes)
+
+# 기술 통계량 확인
+print("\n기술 통계량:")
+print(df.describe())
+
+# 상관관계 히트맵
+plt.figure(figsize=(10, 8))
+correlation_matrix = df.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix')
+plt.show()</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>데이터 크기: (1000, 10)
+
+데이터 타입:
+feature1       float64
+feature2       float64
+feature3       float64
+feature4       float64
+category1      object
+category2      object
+target_variable  int64
+
+기술 통계량:
+         feature1     feature2     feature3     feature4  target_variable
+count  990.000000  995.000000  1000.000000  985.000000      1000.000000
+mean     0.123456    2.345678     3.456789    4.567890         0.600000
+std      1.234567    2.345678     3.456789    4.567890         0.490000
+min     -5.678901   -3.456789    -2.345678   -1.234567         0.000000
+25%     -0.987654    0.987654     1.987654    2.987654         0.000000
+50%      0.123456    2.345678     3.456789    4.567890         1.000000
+75%      1.234567    3.456789     4.567890    5.678901         1.000000
+max      6.789012    8.901234    10.123456   12.345678         1.000000</pre>
+                            <p>위 결과는 데이터의 기본 정보와 기술 통계량을 보여줍니다. 데이터는 1000개의 행과 10개의 열로 구성되어 있으며, 수치형 변수 4개, 범주형 변수 2개, 그리고 타겟 변수 1개가 있습니다. 기술 통계량을 통해 각 변수의 평균, 표준편차, 최소값, 최대값 등을 확인할 수 있습니다. 또한 결측값이 있는 변수도 확인할 수 있습니다(count가 1000보다 작은 경우).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>기계학습 알고리즘을 활용한 모델 구축</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>기계학습 알고리즘은 데이터로부터 패턴을 학습하여 예측이나 분류를 수행하는 알고리즘입니다. 주요 기계학습 알고리즘으로는 회귀 분석, 분류 분석, 군집화 분석, 차원 축소 등이 있습니다. 각 알고리즘은 특정 문제 유형에 적합하며, 데이터의 특성과 목적에 따라 적절한 알고리즘을 선택해야 합니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+# 데이터 로드 및 분할
+df = pd.read_csv('sample_data.csv')
+X = df[['feature1', 'feature2', 'feature3', 'feature4']]
+y = df['target_variable']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 로지스틱 회귀
+logistic_model = LogisticRegression(random_state=42)
+logistic_model.fit(X_train, y_train)
+y_pred_logistic = logistic_model.predict(X_test)
+
+# SVM
+svm_model = SVC(kernel='rbf', probability=True, random_state=42)
+svm_model.fit(X_train, y_train)
+y_pred_svm = svm_model.predict(X_test)
+
+# 랜덤 포레스트
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+y_pred_rf = rf_model.predict(X_test)
+
+# 모델 평가
+def evaluate_model(y_true, y_pred, model_name):
+    accuracy = accuracy_score(y_true, y_pred)
+    conf_matrix = confusion_matrix(y_true, y_pred)
+    class_report = classification_report(y_true, y_pred)
+    
+    print(f'\n{model_name} 평가 결과:')
+    print(f'정확도: {accuracy:.4f}')
+    print(f'\n혼동 행렬:')
+    print(conf_matrix)
+    print(f'\n분류 보고서:')
+    print(class_report)
+
+evaluate_model(y_test, y_pred_logistic, '로지스틱 회귀')
+evaluate_model(y_test, y_pred_svm, 'SVM')
+evaluate_model(y_test, y_pred_rf, '랜덤 포레스트')</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>로지스틱 회귀 평가 결과:
+정확도: 0.8500
+
+혼동 행렬:
+[[85 15]
+ [10 90]]
+
+분류 보고서:
+              precision    recall  f1-score   support
+
+           0       0.89      0.85      0.87       100
+           1       0.86      0.90      0.88       100
+
+    accuracy                           0.88       200
+   macro avg       0.88      0.88      0.88       200
+weighted avg       0.88      0.88      0.88       200</pre>
+                            <p>위 결과는 로지스틱 회귀 모델의 성능을 보여줍니다. 정확도는 0.85로 모델이 테스트 데이터의 85%를 정확히 분류했음을 의미합니다. 혼동 행렬은 실제 클래스와 예측 클래스의 관계를 보여줍니다. 예를 들어, 실제 클래스가 0인 100개의 샘플 중 85개는 정확히 0으로 예측되었고, 15개는 잘못 예측되었습니다. 분류 보고서는 각 클래스별 정밀도(precision), 재현율(recall), F1-score를 보여줍니다. 이를 통해 모델이 각 클래스를 얼마나 잘 분류하는지 확인할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>모델 평가 및 최적 모델 선정</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>모델 평가는 구축한 모델의 성능을 측정하고, 여러 모델 중 최적의 모델을 선정하는 과정입니다. 회귀 모델의 경우 MSE, RMSE, MAE, R-squared 등의 지표를, 분류 모델의 경우 정확도, 정밀도, 재현율, F1-score, AUC 등의 지표를 사용합니다. 또한 교차 검증을 통해 모델의 일반화 성능을 평가하고, 하이퍼파라미터 튜닝을 통해 모델의 성능을 최적화할 수 있습니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">from sklearn.model_selection import cross_val_score, KFold, GridSearchCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import roc_curve, auc
+
+# 교차 검증
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+
+models = {
+    'Logistic Regression': LogisticRegression(random_state=42),
+    'SVM': SVC(kernel='rbf', random_state=42),
+    'Random Forest': RandomForestClassifier(n_estimators=100, random_state=42)
+}
+
+for name, model in models.items():
+    scores = cross_val_score(model, X, y, cv=kf, scoring='accuracy')
+    print(f'{name} 교차 검증 정확도: {scores.mean():.4f} (±{scores.std():.4f})')
+
+# 하이퍼파라미터 튜닝
+param_grid_rf = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [None, 10, 20, 30],
+    'min_samples_split': [2, 5, 10]
+}
+
+grid_search_rf = GridSearchCV(RandomForestClassifier(random_state=42), param_grid_rf, cv=5, scoring='accuracy')
+grid_search_rf.fit(X, y)
+
+print("\n랜덤 포레스트 최적 하이퍼파라미터:", grid_search_rf.best_params_)
+print("랜덤 포레스트 최고 정확도:", grid_search_rf.best_score_)
+
+# ROC 곡선 및 AUC
+best_model = grid_search_rf.best_estimator_
+best_model.fit(X_train, y_train)
+y_proba = best_model.predict_proba(X_test)[:, 1]
+
+fpr, tpr, _ = roc_curve(y_test, y_proba)
+roc_auc = auc(fpr, tpr)
+
+plt.figure(figsize=(10, 8))
+plt.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_auc:.4f})')
+plt.plot([0, 1], [0, 1], 'k--')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve')
+plt.legend(loc='lower right')
+plt.show()</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>Logistic Regression 교차 검증 정확도: 0.8450 (±0.0234)
+SVM 교차 검증 정확도: 0.8750 (±0.0187)
+Random Forest 교차 검증 정확도: 0.8900 (±0.0141)
+
+랜덤 포레스트 최적 하이퍼파라미터: {'max_depth': 20, 'min_samples_split': 5, 'n_estimators': 200}
+랜덤 포레스트 최고 정확도: 0.9050</pre>
+                            <p>위 결과는 세 가지 모델의 5-fold 교차 검증 정확도와 랜덤 포레스트 모델의 하이퍼파라미터 튜닝 결과를 보여줍니다. 랜덤 포레스트 모델이 평균 정확도 0.89로 가장 높은 성능을 보이며, 표준편차도 0.0141로 가장 낮아 안정적인 성능을 보입니다. 하이퍼파라미터 튜닝 후에는 정확도가 0.905로 향상되었습니다. 최적의 하이퍼파라미터는 n_estimators=200, max_depth=20, min_samples_split=5입니다. 이를 통해 최종 모델로 랜덤 포레스트를 선택하고, 해당 하이퍼파라미터 설정을 사용하는 것이 좋다고 판단할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="statistics">
+            <h2>통계 영역</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>기초 통계 분석</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>기초 통계 분석은 데이터의 기본적인 특성을 파악하기 위한 분석 방법입니다. 주요 내용으로는 기술통계량 계산, 데이터 분포 시각화, 확률 분포 이해 등이 포함됩니다. 이를 통해 데이터의 중심 경향성, 분산, 분포 형태 등을 파악할 수 있습니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+
+# 데이터 로드
+df = pd.read_csv('sample_data.csv')
+
+# 기술통계량 계산
+desc_stats = df.describe()
+print("기술통계량:")
+print(desc_stats)
+
+# 추가 기술통계량 계산
+for col in df.select_dtypes(include=['int64', 'float64']).columns:
+    print(f"\n{col} 통계량:")
+    data = df[col].dropna()
+    print(f"평균: {np.mean(data):.4f}")
+    print(f"중앙값: {np.median(data):.4f}")
+    print(f"최빈값: {stats.mode(data)[0][0]:.4f}")
+    print(f"표준편차: {np.std(data):.4f}")
+    print(f"분산: {np.var(data):.4f}")
+    print(f"왜도: {stats.skew(data):.4f}")
+    print(f"첨도: {stats.kurtosis(data):.4f}")
+
+# 히스토그램
+plt.figure(figsize=(12, 8))
+for i, col in enumerate(df.select_dtypes(include=['int64', 'float64']).columns[:4]):
+    plt.subplot(2, 2, i+1)
+    sns.histplot(df[col], kde=True)
+    plt.title(f'{col} 히스토그램')
+    plt.axvline(df[col].mean(), color='r', linestyle='--', label='평균')
+    plt.axvline(df[col].median(), color='g', linestyle='-.', label='중앙값')
+    plt.legend()
+plt.tight_layout()
+plt.show()</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>기술통계량:
+       feature1     feature2     feature3     feature4
+count  990.000000  995.000000  1000.000000  985.000000
+mean     0.123456    2.345678     3.456789    4.567890
+std      1.234567    2.345678     3.456789    4.567890
+min     -5.678901   -3.456789    -2.345678   -1.234567
+25%     -0.987654    0.987654     1.987654    2.987654
+50%      0.123456    2.345678     3.456789    4.567890
+75%      1.234567    3.456789     4.567890    5.678901
+max      6.789012    8.901234    10.123456   12.345678</pre>
+                            <p>위 결과는 각 변수의 기술통계량을 보여줍니다. count는 결측값이 없는 데이터의 개수, mean은 평균, std는 표준편차, min은 최소값, 25%는 1사분위수, 50%는 중앙값, 75%는 3사분위수, max는 최대값을 나타냅니다. 이를 통해 데이터의 중심 경향성과 분산을 파악할 수 있습니다. 예를 들어, feature1의 평균은 0.123456이고 표준편차는 1.234567입니다. 또한 결측값의 존재 여부도 확인할 수 있습니다(count가 전체 데이터 수보다 작은 경우).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>통계적 추론 및 통계 모형 구축</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>통계적 추론은 표본 데이터를 바탕으로 모집단의 특성에 대한 결론을 도출하는 과정입니다. 주요 내용으로는 가설 검정, 신뢰구간 계산, 정규 모집단에서의 추론 등이 포함됩니다. 이를 통해 데이터에서 관찰된 패턴이 우연에 의한 것인지, 실제로 의미 있는 것인지를 판단할 수 있습니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 데이터 로드
+df = pd.read_csv('sample_data.csv')
+
+# 단일 표본 t-검정 (평균이 특정 값과 다른지 검정)
+sample = df['feature1'].dropna()
+mu0 = 0  # 귀무가설의 평균값
+
+# 귀무가설: 모집단의 평균은 mu0이다.
+# 대립가설: 모집단의 평균은 mu0이 아니다.
+t_stat, p_value = stats.ttest_1samp(sample, mu0)
+
+print("단일 표본 t-검정 결과:")
+print(f"t-통계량: {t_stat:.4f}")
+print(f"p-값: {p_value:.4f}")
+print(f"결론: {'귀무가설 기각 (평균이 {mu0}과 다름)' if p_value < 0.05 else '귀무가설 채택 (평균이 {mu0}과 다르다고 할 수 없음)'}")
+
+# 독립 표본 t-검정 (두 집단의 평균이 다른지 검정)
+group1 = df[df['category'] == 'A']['feature1'].dropna()
+group2 = df[df['category'] == 'B']['feature1'].dropna()
+
+# 등분산 검정 (Levene's test)
+levene_stat, levene_p = stats.levene(group1, group2)
+print("\n등분산 검정 결과:")
+print(f"통계량: {levene_stat:.4f}")
+print(f"p-값: {levene_p:.4f}")
+print(f"결론: {'등분산 가정 기각 (분산이 다름)' if levene_p < 0.05 else '등분산 가정 채택 (분산이 같다고 할 수 있음)'}")
+
+# 독립 표본 t-검정
+equal_var = levene_p >= 0.05  # 등분산 가정 여부
+t_stat, p_value = stats.ttest_ind(group1, group2, equal_var=equal_var)
+
+print("\n독립 표본 t-검정 결과:")
+print(f"t-통계량: {t_stat:.4f}")
+print(f"p-값: {p_value:.4f}")
+print(f"결론: {'귀무가설 기각 (두 집단의 평균이 다름)' if p_value < 0.05 else '귀무가설 채택 (두 집단의 평균이 같다고 할 수 있음)'}")</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>단일 표본 t-검정 결과:
+t-통계량: 2.3456
+p-값: 0.0198
+결론: 귀무가설 기각 (평균이 0과 다름)
+
+등분산 검정 결과:
+통계량: 1.2345
+p-값: 0.2678
+결론: 등분산 가정 채택 (분산이 같다고 할 수 있음)
+
+독립 표본 t-검정 결과:
+t-통계량: -3.4567
+p-값: 0.0006
+결론: 귀무가설 기각 (두 집단의 평균이 다름)</pre>
+                            <p>위 결과는 다양한 가설 검정의 결과를 보여줍니다. 단일 표본 t-검정에서는 p-값이 0.0198로 유의수준 0.05보다 작으므로 귀무가설을 기각합니다. 즉, 모집단의 평균은 0과 다르다고 할 수 있습니다. 등분산 검정에서는 p-값이 0.2678로 유의수준 0.05보다 크므로 귀무가설을 채택합니다. 즉, 두 집단의 분산은 같다고 할 수 있습니다. 독립 표본 t-검정에서는 p-값이 0.0006으로 유의수준 0.05보다 작으므로 귀무가설을 기각합니다. 즉, 두 집단의 평균은 다르다고 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>상관 분석 및 회귀 분석</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>상관 분석은 두 변수 간의 관계의 강도와 방향을 측정하는 분석 방법입니다. 회귀 분석은 독립변수와 종속변수 간의 관계를 모델링하는 방법으로, 독립변수의 값을 바탕으로 종속변수의 값을 예측할 수 있습니다. 단순 회귀 분석은 하나의 독립변수를 사용하고, 다중 회귀 분석은 여러 개의 독립변수를 사용합니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+import statsmodels.api as sm
+
+# 데이터 로드
+df = pd.read_csv('sample_data.csv')
+
+# 피어슨 상관계수 계산
+correlation_matrix = df.corr(method='pearson')
+print("피어슨 상관계수 행렬:")
+print(correlation_matrix)
+
+# 상관계수 시각화
+plt.figure(figsize=(12, 10))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+plt.title('피어슨 상관계수 히트맵')
+plt.show()
+
+# 특정 두 변수 간의 상관관계 시각화
+x = 'feature1'
+y = 'feature2'
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=x, y=y, data=df)
+plt.title(f'{x}와 {y}의 산점도')
+plt.show()
+
+# 상관계수 검정
+r, p_value = stats.pearsonr(df[x].dropna(), df[y].dropna())
+print(f"\n{x}와 {y}의 피어슨 상관계수 검정 결과:")
+print(f"상관계수(r): {r:.4f}")
+print(f"p-값: {p_value:.4f}")
+print(f"결론: {'유의한 상관관계가 있음' if p_value < 0.05 else '유의한 상관관계가 없음'}")
+
+# 단순 회귀 분석
+X = df[['feature1']]
+y = df['target']
+X_sm = sm.add_constant(X)  # 상수항 추가
+model = sm.OLS(y, X_sm).fit()
+print("\n단순 회귀 분석 결과:")
+print(model.summary())</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>피어슨 상관계수 행렬:
+          feature1  feature2  feature3  target
+feature1   1.0000    0.7500    0.2500   0.8000
+feature2   0.7500    1.0000    0.3000   0.6500
+feature3   0.2500    0.3000    1.0000   0.3500
+target     0.8000    0.6500    0.3500   1.0000
+
+feature1와 feature2의 피어슨 상관계수 검정 결과:
+상관계수(r): 0.7500
+p-값: 0.0000
+결론: 유의한 상관관계가 있음</pre>
+                            <p>위 결과는 변수 간의 상관관계를 보여줍니다. feature1과 target 간의 상관계수는 0.8로, 강한 양의 상관관계가 있습니다. feature2와 target 간의 상관계수는 0.65로, 중간 정도의 양의 상관관계가 있습니다. feature3와 target 간의 상관계수는 0.35로, 약한 양의 상관관계가 있습니다. feature1과 feature2 간의 상관계수는 0.75로, 강한 양의 상관관계가 있으며, 이는 통계적으로 유의합니다(p-값 < 0.05).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>다변량 분석 및 시계열 분석</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>개념</h4>
+                        <p>다변량 분석은 여러 변수를 동시에 분석하는 방법으로, 분산분석(ANOVA), 범주형 자료분석 등이 포함됩니다. 시계열 분석은 시간에 따라 수집된 데이터를 분석하는 방법으로, 시간에 따른 패턴, 추세, 계절성 등을 파악할 수 있습니다.</p>
+                        
+                        <h4>Python 코드 예시</h4>
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# 데이터 로드
+df = pd.read_csv('sample_data.csv')
+
+# 일원배치 분산분석 (One-way ANOVA)
+# 귀무가설: 모든 그룹의 평균이 같다.
+# 대립가설: 적어도 하나의 그룹의 평균이 다르다.
+groups = [df[df['category'] == cat]['value'].dropna() for cat in df['category'].unique()]
+f_stat, p_value = stats.f_oneway(*groups)
+
+print("일원배치 분산분석 결과:")
+print(f"F-통계량: {f_stat:.4f}")
+print(f"p-값: {p_value:.4f}")
+print(f"결론: {'귀무가설 기각 (그룹 간 평균이 다름)' if p_value < 0.05 else '귀무가설 채택 (그룹 간 평균이 같다고 할 수 있음)'}")
+
+# 그룹별 상자그림
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='category', y='value', data=df)
+plt.title('카테고리별 값의 분포')
+plt.show()
+
+# 시계열 데이터 로드
+df_time = pd.read_csv('time_series_data.csv')
+df_time['date'] = pd.to_datetime(df_time['date'])
+df_time.set_index('date', inplace=True)
+
+# 시계열 데이터 시각화
+plt.figure(figsize=(12, 6))
+plt.plot(df_time.index, df_time['value'])
+plt.title('시계열 데이터')
+plt.xlabel('날짜')
+plt.ylabel('값')
+plt.grid(True)
+plt.show()
+
+# 시계열 분해 (추세, 계절성, 잔차)
+from statsmodels.tsa.seasonal import seasonal_decompose
+decomposition = seasonal_decompose(df_time['value'], model='additive', period=12)
+fig = decomposition.plot()
+fig.set_size_inches(12, 8)
+plt.tight_layout()
+plt.show()</code></pre>
+                        
+                        <h4>출력 결과 해석 예시</h4>
+                        <div class="output-example">
+                            <pre>일원배치 분산분석 결과:
+F-통계량: 15.6789
+p-값: 0.0000
+결론: 귀무가설 기각 (그룹 간 평균이 다름)</pre>
+                            <p>위 결과는 일원배치 분산분석의 결과를 보여줍니다. F-통계량은 15.6789이고 p-값은 0.0000으로, 유의수준 0.05보다 작습니다. 따라서 귀무가설을 기각하고, 적어도 하나의 그룹의 평균이 다르다고 할 수 있습니다. 이는 카테고리별로 값의 평균이 통계적으로 유의하게 다르다는 것을 의미합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples">
+            <h2>예제 문제</h2>
+            <div class="tabs">
+                <div class="tab-header">
+                    <div class="tab-btn active" data-tab="example-ml">기계학습 예제</div>
+                    <div class="tab-btn" data-tab="example-stat">통계 예제</div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="example-ml">
+                        <div class="card">
+                            <h3>ADP 15회 기계학습 문제</h3>
+                            <p><strong>데이터 확인 및 전처리</strong></p>
+                            <ul>
+                                <li>1.1 EDA와 시각화 및 통계량 제시</li>
+                                <li>1.2 변수 선택(VIF), 파생변수 생성, 데이터 분할(train/test(20%)), 시각화와 통계량을 제시하시오</li>
+                                <li>1.3 종속변수들중 "1"인지 아닌지 판단하려한다. 종속변수를 1과 1이 아닌 값으로 치환하고 로지스틱 회귀 분석을 실시하라. confusionMatrix를 확인 및 cut off value 정하여라</li>
+                                <li>1.4 종속변수(y)를 다항(7 class)인 상태에서 SVM을 포함하여 3가지 알고리즘으로 평가하라</li>
+                                <li>1.5 종속변수를 제외한 나머지 데이터를 바탕으로 군집분석을 실시하고 최적의 군집수와 군집 레이블을 구하여라. 군집레이블을 추가한 데이터를 1-4에서 만든 모델중 가장 성능이 좋았던 하나의 모델에 다시 학습하여 F1-score를 비교하라</li>
+                            </ul>
+                            <p><strong>데이터 설명</strong></p>
+                            <ul>
+                                <li>철강데이터 종속변수: target</li>
+                                <li>데이터 출처: <a href="https://www.kaggle.com/uciml/faulty-steel-plates" target="_blank">https://www.kaggle.com/uciml/faulty-steel-plates</a></li>
+                            </ul>
+                            
+                            <h4>문제 해결 접근 방법</h4>
+                            <ol>
+                                <li>
+                                    <strong>EDA 및 데이터 전처리</strong>
+                                    <p>먼저 데이터의 기본 정보(크기, 변수 타입, 결측값 등)를 확인하고, 기술통계량을 계산합니다. 히스토그램, 상자그림, 산점도 등을 통해 데이터 분포와 변수 간 관계를 시각화합니다.</p>
+                                </li>
+                                <li>
+                                    <strong>변수 선택 및 데이터 분할</strong>
+                                    <p>VIF(Variance Inflation Factor)를 계산하여 다중공선성이 높은 변수를 제거하고, 필요한 경우 파생변수를 생성합니다. 데이터를 훈련 세트(80%)와 테스트 세트(20%)로 분할합니다.</p>
+                                </li>
+                                <li>
+                                    <strong>로지스틱 회귀 분석</strong>
+                                    <p>종속변수를 이진 분류 문제로 변환하고(1 vs 나머지), 로지스틱 회귀 모델을 학습합니다. 혼동 행렬을 통해 모델 성능을 평가하고, ROC 곡선을 그려 최적의 임계값(cut-off value)을 결정합니다.</p>
+                                </li>
+                                <li>
+                                    <strong>다항 분류 모델 평가</strong>
+                                    <p>원래의 다항 종속변수(7개 클래스)를 사용하여 SVM, 랜덤 포레스트, 그래디언트 부스팅 등 3가지 알고리즘으로 모델을 구축하고 성능을 비교합니다.</p>
+                                </li>
+                                <li>
+                                    <strong>군집 분석 및 모델 성능 향상</strong>
+                                    <p>종속변수를 제외한 독립변수들을 사용하여 K-means 군집 분석을 수행하고, 실루엣 점수 등을 통해 최적의 군집 수를 결정합니다. 군집 레이블을 새로운 특성으로 추가하여 이전에 구축한 최고 성능 모델을 다시 학습시키고, F1-score의 변화를 비교합니다.</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="example-stat">
+                        <div class="card">
+                            <h3>ADP 22회 통계 문제</h3>
+                            <p><strong>금속 성분 함유량 데이터(변수 1개) - 제품에 금속 재질 함유량의 분산이 1.3을 넘으면 불량이라고 보고 있는데 제조사별로 차이가 난다고 제보를 받았다. 분산에 대해 검정을 수행하시오. (유의확률 0.05)</strong></p>
+                            <ul>
+                                <li>1 연구가설과 귀무가설 작성</li>
+                                <li>2 양측 검정 시행</li>
+                                <li>3 검정통계량, 가설채택</li>
+                            </ul>
+                            
+                            <h4>문제 해결 접근 방법</h4>
+                            <ol>
+                                <li>
+                                    <strong>가설 설정</strong>
+                                    <p>귀무가설(H0): 분산은 1.3이다.<br>대립가설(H1): 분산은 1.3이 아니다.</p>
+                                </li>
+                                <li>
+                                    <strong>검정 통계량 계산</strong>
+                                    <p>분산에 대한 검정은 카이제곱 검정을 사용합니다. 검정 통계량은 (n-1) * s²/σ²로 계산되며, 여기서 n은 표본 크기, s²은 표본 분산, σ²은 귀무가설에서의 분산(1.3)입니다.</p>
+                                    <pre><code class="language-python">from scipy import stats
+import numpy as np
+
+def chi_var_test(x, var0, alternative='two-sided'):
+    lenth = len(x)
+    chi_stat = (lenth-1) * np.var(x, ddof=1) / var0
+    
+    temp = stats.chi2.cdf(chi_stat, lenth-1)
+    if alternative == 'two-sided':
+        pval = 2*(1-temp) if temp > 0.5 else 2*temp
+    elif alternative == 'greater':
+        pval = 1 - temp
+    elif alternative == 'less':
+        pval = temp
+    else:
+        print("ERROR")
+        
+    return chi_stat, pval
+
+# 양측 검정 시행
+chi_stat, p_val = chi_var_test(df['content'], var0=1.3, alternative='two-sided')
+print('p-value ', p_val)
+print('statics ', chi_stat)</code></pre>
+                                </li>
+                                <li>
+                                    <strong>결론 도출</strong>
+                                    <p>계산된 p-값이 유의수준 0.05보다 작으면 귀무가설을 기각하고, 크면 귀무가설을 채택합니다. 이 문제에서는 p-값이 4.27e-08로 매우 작으므로 귀무가설을 기각하고, 분산이 1.3과 다르다는 결론을 내립니다.</p>
+                                </li>
+                            </ol>
+                            
+                            <p><strong>Lot별 200개에 대한 불량 제품 수량 데이터(변수 2개 - lot번호, 불량제품수)</strong></p>
+                            <ul>
+                                <li>1 불량률 관리도에 따라 관리중심선(CL : Center Line), 관리 상한선(UCL : Upper Control Limit), 하한선(LCL : Lower Control Limit) 구하기</li>
+                                <li>2 관리도 시각화</li>
+                            </ul>
+                            
+                            <h4>문제 해결 접근 방법</h4>
+                            <ol>
+                                <li>
+                                    <strong>관리도 계산</strong>
+                                    <p>불량률을 계산하고(불량 제품 수 / 200 * 100), 관리중심선(CL)은 불량률의 평균, 관리 상한선(UCL)과 하한선(LCL)은 각각 CL ± 3σ로 계산합니다.</p>
+                                    <pre><code class="language-python">df['error_case_number'] = df['error_case_number']/200*100
+
+mean = df['error_case_number'].mean()
+ucl = mean + df['error_case_number'].std()*3
+lcl = mean - df['error_case_number'].std()*3
+
+print('cl : ', mean, 'ucl : ', ucl, 'lcl : ', lcl)</code></pre>
+                                </li>
+                                <li>
+                                    <strong>관리도 시각화</strong>
+                                    <p>불량률, 관리중심선, 관리 상한선, 관리 하한선을 그래프로 시각화합니다.</p>
+                                    <pre><code class="language-python">import matplotlib.pyplot as plt
+plt.plot(df['error_case_number'])
+plt.axhline(y=ucl, color='r', linestyle='--', label='Upper')
+plt.axhline(y=lcl, color='y', linestyle='--', label='Lower')
+plt.axhline(y=mean, color='b', label="Mean")
+plt.legend()
+plt.ylabel('error ratio')
+plt.xlabel('lot id')</code></pre>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ADP 실기 시험 대비 자료</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

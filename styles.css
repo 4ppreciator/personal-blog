@@ -1,0 +1,320 @@
+/* 기본 스타일 */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* 네비게이션 스타일 */
+nav {
+    background-color: var(--secondary-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--box-shadow);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 메인 콘텐츠 스타일 */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+section h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* 카드 스타일 */
+.card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.card ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* 정보 박스 스타일 */
+.info-box {
+    background-color: #e8f4fd;
+    border-left: 4px solid var(--info-color);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.info-box h3 {
+    color: var(--info-color);
+    margin-bottom: 0.5rem;
+}
+
+/* 탭 스타일 */
+.tabs {
+    margin-bottom: 2rem;
+}
+
+.tab-header {
+    display: flex;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #f5f7fa;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* 아코디언 스타일 */
+.accordion-item {
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.accordion-header {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.accordion-header:hover {
+    background-color: #f5f7fa;
+}
+
+.accordion-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.accordion-content {
+    background-color: white;
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+    padding: 1.5rem;
+    max-height: 2000px;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+/* 코드 예시 스타일 */
+pre {
+    background-color: #282c34;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* 출력 예시 스타일 */
+.output-example {
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--info-color);
+}
+
+.output-example pre {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+/* 차트 컨테이너 스타일 */
+.chart-container {
+    width: 100%;
+    height: 300px;
+    margin: 2rem 0;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    
+    .tab-header {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+    
+    .accordion-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .accordion-content {
+        padding: 0 1rem;
+    }
+    
+    .accordion-item.active .accordion-content {
+        padding: 1rem;
+    }
+}
